@@ -1,0 +1,9 @@
+{
+    "name": "sui77/toml-check",
+    "type": "project",
+    "require": {
+        "paragonie/sodium_compat": "^1.8",
+        "zulucrypto/stellar-api": "^0.7.0",
+        "predis/predis": "^1.1"
+    }
+}

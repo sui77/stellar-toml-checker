@@ -1,0 +1,11 @@
+RewriteEngine On
+
+##### Zend MVC rewrites
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+# Do nothing if a file actually exists or loadbalancer
+RewriteRule ^.*$ - [NC,L]
+
+# Everything else to mvc.php
+RewriteRule ^(.+)$ ./index.php?home_domain=$1 [NC,L]
