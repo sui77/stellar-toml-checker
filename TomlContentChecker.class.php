@@ -14,6 +14,9 @@ class TomlContentChecker
             'HORIZON_URL' => [
                 'horizonServer'
             ],
+            'NETWORK_PASSPHRASE' => [
+                'string'
+            ],
             'FEDERATION_SERVER' => [
                 'federationServer:json'
             ],
@@ -25,6 +28,9 @@ class TomlContentChecker
             ],
             'TRANSFER_SERVER' => [
                 'transferServer'
+            ],
+            'TRANSFER_SERVER_SEP0024' => [
+               'transferServer'                
             ],
             'KYC_SERVER' => [
                 'https'
