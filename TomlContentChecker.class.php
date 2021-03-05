@@ -21,7 +21,7 @@ class TomlContentChecker
                 'federationServer:json'
             ],
             'AUTH_SERVER' => [
-                'authServer'
+                'deprecatedSep3'
             ],
             'DEPOSIT_SERVER' => [
                 'depositServer'
@@ -39,7 +39,7 @@ class TomlContentChecker
                 'webauthServer'
             ],
             'SIGNING_KEY' => [
-                'publicKey'
+                'deprecatedSep3'
             ],
             'NODE_NAMES' => [
                 'nodenamesArray',
@@ -75,6 +75,9 @@ class TomlContentChecker
             'URI_REQUEST_SIGNING_KEY' => [
             'publicKey'
                 ],
+            'DIRECT_PAYMENT_SERVER' => [
+              'https'
+            ],
             'DOCUMENTATION' => [
             ],
             'PRINCIPALS' => [
@@ -289,6 +292,11 @@ class TomlContentChecker
         if ($this->isAssoc($s)) {
             return 'Must be a TOML array of tables (double brackets)';
         }
+    }
+
+    public function deprecatedSep3Test()
+    {
+        return 'SEP-0003 is deprecated. https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0003.md';
     }
 
     public function deprecated200Test()
