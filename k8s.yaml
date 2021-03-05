@@ -47,7 +47,7 @@ metadata:
     haproxy.org/forwarded-for: "true"
     haproxy.org/load-balance: "roundrobin"
     haproxy.org/ssl-certificate: "devops/tls-sui-li"
-    haproxy.org/ssl-redirect: "false"
+    haproxy.org/ssl-redirect: "true"
 spec:
   tls:
   - hosts:
