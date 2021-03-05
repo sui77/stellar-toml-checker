@@ -1,0 +1,106 @@
+#                                ▄██▄
+#    Define                      ▀███
+#       all the                     █
+#     things!      ▄▄▄▄▄            █
+#                 ▀▄    ▀▄          █
+#             ▄▀▀▀▄ █▄▄▄▄█▄▄ ▄▀▀▀▄  █
+#            █  ▄  █        █   ▄ █ █
+#            ▀▄   ▄▀        ▀▄   ▄▀ █
+#             █▀▀▀            ▀▀▀ █ █
+#             █                   █ █
+#   ▄▀▄▄▀▄    █  ▄█▀█▀█▀█▀█▀█▄    █ █
+#   █▒▒▒▒█    █  █████████████▄   █ █
+#   █▒▒▒▒█    █  ██████████████▄  █ █
+#   █▒▒▒▒█    █   ██████████████▄ █ █
+#   █▒▒▒▒█    █    ██████████████ █ █
+#   █▒▒▒▒█    █   ██████████████▀ █ █
+#   █▒▒▒▒█   ██   ██████████████  █ █
+#   ▀████▀  ██▀█  █████████████▀  █▄█
+#     ██   ██  ▀█  █▄█▄█▄█▄█▄█▀  ▄█▀
+#     ██  ██    ▀█             ▄▀▓█
+#     ██ ██      ▀█▀▄▄▄▄▄▄▄▄▄▀▀▓▓▓█
+#     ████        █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█
+#     ███         █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█
+#     ██          █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█
+#     ██          █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█
+#     ██         ▐█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█
+
+
+#FEDERATION_SERVER   = "https://stellar.sui.li/api/federation"
+
+AUTH_SERVER         = "https://stellar.sui.li/api/auth"
+
+#TRANSFER_SERVER     = "https://stellar.sui.li/api/transfer"
+
+#KYC_SERVER          = "https://stellar.sui.li/api/kyc"
+
+#WEB_AUTH_ENDPOINT   = "https://stellar.sui.li/api/webauth"
+
+SIGNING_KEY         = "GBHMXTHDK7R2IJFUIDIUWMR7VAKKDSIPC6PT5TDKLACEAU3FBAR2XSUI"
+
+VERSION = "2.0.0"
+
+#HORIZON_URL = "https://horizon.sui.li"
+
+DIRECT_PAYMENT_SERVER = "https://www.weblin.io/sjdflk"
+
+
+ACCOUNTS=[
+    "GBHMXTHDK7R2IJFUIDIUWMR7VAKKDSIPC6PT5TDKLACEAU3FBAR2XSUI",
+    "GCDY5K3BDUSTWPIUDVYB2U7KLAOQYCYQMJKNMQWVQXM2NKYUXHGDZSUI",
+    "GCSALT7P5DEWLYQSUIQVNIFOYEZH3FFLQ3YBDHAREFMEZLLEWYFW5JZU",
+    "GCSALT6MOL2Q2MIGLHJDN64IUHKKBYRHFDEFGY7REPLEGGBEWMFZXSSK"
+]
+
+
+
+[DOCUMENTATION]
+ORG_DBA = "sui"
+ORG_NAME = "stellar.sui.li"
+ORG_KEYBASE = "sui77"
+ORG_PHONE_NUMBER = "+49 173 89 59 456"
+ORG_URL = "https://stellar.sui.li"
+#ORG_LOGO = "https://stellar.sui.li/img/logo.png"
+
+[[PRINCIPALS]]
+name                    = "Suat Özgür"
+email                   = "s@sui.li"
+keybase                 = "sui77"
+github                  = "sui77"
+id_photo_hash           = "59404c168e9cafda28f960d052a262803e9f1f7ce7a4c856c32fc53b0cc77d8d"
+verification_photo_hash = "000000008bf44a528a09d203203a6a97c165cf53a92ecc27aed0b49b86a19564"
+
+[[CURRENCIES]]
+code = "NaCl"
+issuer = "GCSALT7P5DEWLYQSUIQVNIFOYEZH3FFLQ3YBDHAREFMEZLLEWYFW5JZU"
+status = "live"
+display_decimals = "7"
+name = "Salt"
+attestation_of_reserve = "https://sui.li"
+desc = "1 NaCl represents 10000000 ionic NaCl compounds. This asset is physically backed in a salt shaker in my kitchen. Simply create a trustline to get some NaCls for free."
+image = "https://stellar.sui.li/NaCl/img.png"
+is_asset_anchored =true
+anchor_asset_type = "commodity"
+is_unlimited = false
+max_number = 1000000
+
+#[[VALIDATORS]]
+#ALIAS="sui1"
+#DISPLAY_NAME="sui.li 1"
+#HOST="stellar.sui.li"
+#PUBLIC_KEY="GBHMXTHDK7R2IJFUIDIUWMR7VAKKDSIPC6PT5TDKLACEAU3FBAR2XSUI"
+#HISTORY="http://stellar.sui.li/history"
+
+#[[VALIDATORS]]
+#ALIAS="sui2"
+#DISPLAY_NAME="sui.li 2"
+#HOST="stellar2.sui.li"
+#PUBLIC_KEY="GASUI2ZC7SSI2LSNIC6YP5LYT3RTQHVKWAKIG4USULRTBVVLKWYR64R3"
+#HISTORY="http://stellar.sui.li/history"
+
+[[VALIDATORS]]
+ALIAS="sui3"
+DISPLAY_NAME="sui.li 3"
+HOST="stellar3.sui.li"
+PUBLIC_KEY="GASUI3OAGIOLSDCGNKWUMB4YNLQ4Y3W6OYEAAWJX3FKQFSWJRIWWABCC"
+HISTORY="http://stellar.sui.li/history"
