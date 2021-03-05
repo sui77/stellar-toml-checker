@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: stellar-toml-checker
-        image: docker.k8s.sui.li/stellar-toml-checker:8
+        image: docker.k8s.sui.li/stellar-toml-checker:9
         lifecycle:
           postStart:
             exec:
