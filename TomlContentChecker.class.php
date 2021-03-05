@@ -39,7 +39,7 @@ class TomlContentChecker
                 'webauthServer'
             ],
             'SIGNING_KEY' => [
-                'deprecatedSep3'
+                'publicKey'
             ],
             'NODE_NAMES' => [
                 'nodenamesArray',
