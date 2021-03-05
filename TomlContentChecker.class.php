@@ -211,6 +211,9 @@ class TomlContentChecker
             'anchor_asset' => [
                 'string'
             ],
+            'attestation_of_reserve' => [
+                'https'
+            ],
             'redemption_instructions' => [
                 'string'
             ],
