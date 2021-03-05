@@ -69,7 +69,7 @@ ini_set('display_errors', 0);
             $('#submitForm').submit(function (e) {
                 e.preventDefault();
                 $('#submitButton').attr('disabled', 'disabled');
-                top.location.href = '<?=$_SERVER['SERVER_NAME']?>/' + $('#home_domain').val();
+                top.location.href = '/' + $('#home_domain').val();
 
                 window.setInterval(function () {
                     let b = $('#submitButton').html();
@@ -98,7 +98,7 @@ ini_set('display_errors', 0);
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item <?= ($page == 'tomlcheck') ? 'active' : '' ?>">
+            <li class="nav-item active">
                 <a class="nav-link" href="/">toml checker</a>
             </li>
 

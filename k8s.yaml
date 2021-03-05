@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: stellar-toml-checker
-        image: docker.k8s.sui.li/stellar-toml-checker:1
+        image: docker.k8s.sui.li/stellar-toml-checker:2
         lifecycle:
           postStart:
             exec:
@@ -40,7 +40,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: flag-generator
+  name: stellar-toml-checker
   namespace: suat
   annotations:
     haproxy.org/check: "true"
@@ -61,7 +61,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: flag-generator
+            name: stellar-toml-checker
             port:
               number: 80
 

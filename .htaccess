@@ -8,7 +8,7 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 
 # legacy url, external pages linking to this
-RewriteRule ^stellar-check.*$ / [NC,L,R=301]
+RewriteRule ^toml-check.*$ / [NC,L,R=301]
 
 # Everything else to mvc.php
 RewriteRule ^(.+)$ ./index.php?home_domain=$1 [NC,L]
