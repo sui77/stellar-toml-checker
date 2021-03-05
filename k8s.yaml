@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stellar-toml-checker
+  namespace: suat
+spec:
+  selector:
+    matchLabels:
+      run: stellar-toml-checker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: stellar-toml-checker
+    spec:
+      containers:
+      - name: stellar-toml-checker
+        image: docker.k8s.sui.li/stellar-toml-checker:1
+        lifecycle:
+          postStart:
+            exec:
+              command: ["service", "redis-server", "start"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stellar-toml-checker
+  namespace: suat
+  labels:
+    run: stellar-toml-checker
+spec:
+  selector:
+    run: stellar-toml-checker
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flag-generator
+  namespace: suat
+  annotations:
+    haproxy.org/check: "true"
+    haproxy.org/forwarded-for: "true"
+    haproxy.org/load-balance: "roundrobin"
+    haproxy.org/ssl-certificate: "devops/tls-sui-li"
+    haproxy.org/ssl-redirect: "false"
+spec:
+  tls:
+  - hosts:
+    - stellar.sui.li
+    secretName: "devops-tls-sui-li"
+  rules:
+  - host: "stellar.sui.li"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flag-generator
+            port:
+              number: 80
+

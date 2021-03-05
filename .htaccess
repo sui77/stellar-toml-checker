@@ -7,5 +7,8 @@ RewriteCond %{REQUEST_FILENAME} -d
 # Do nothing if a file actually exists or loadbalancer
 RewriteRule ^.*$ - [NC,L]
 
+# legacy url, external pages linking to this
+RewriteRule ^stellar-check.*$ / [NC,L,R=301]
+
 # Everything else to mvc.php
 RewriteRule ^(.+)$ ./index.php?home_domain=$1 [NC,L]

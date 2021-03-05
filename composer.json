@@ -4,6 +4,7 @@
     "require": {
         "paragonie/sodium_compat": "^1.8",
         "zulucrypto/stellar-api": "^0.7.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "yosymfony/toml": "^1.0"
     }
 }
