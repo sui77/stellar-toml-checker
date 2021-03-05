@@ -153,7 +153,7 @@ ini_set('display_errors', 0);
             $domain = $_REQUEST['home_domain'];
             $domainfail = false;
             if (preg_match('/^G[A-Z0-9]{55}$/', $_REQUEST['home_domain'])) {
-                $acc = json_decode(file_get_contents('http://127.0.0.1:8000/accounts/' . $_REQUEST['home_domain']), 1);
+                $acc = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $_REQUEST['home_domain']), 1);
 
                 $_REQUEST['home_domain'] = $domain = $acc['home_domain'];
                 if (empty($domain)) {
