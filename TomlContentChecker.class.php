@@ -73,10 +73,13 @@ class TomlContentChecker
                 'deprecated200',
             ],
             'URI_REQUEST_SIGNING_KEY' => [
-            'publicKey'
-                ],
+                'publicKey'
+            ],
             'DIRECT_PAYMENT_SERVER' => [
-              'https'
+                'https'
+            ],
+            'ANCHOR_QUOTE_SERVER' => [
+                'https'
             ],
             'DOCUMENTATION' => [
             ],
@@ -130,6 +133,9 @@ class TomlContentChecker
                 'string'
             ],
             'ORG_OFFICIAL_EMAIL' => [
+                'string'
+            ],
+            'ORG_SUPPORT_EMAIL' => [
                 'string'
             ],
             'ORG_LICENSING_AUTHORITY' => [
@@ -277,7 +283,7 @@ class TomlContentChecker
     public function alphanumTest($s)
     {
 //        return $s;
-        if (!preg_match('/^[a-zA-Z0-9\.]*$/', $s)) {
+        if (!preg_match('/^"+[a-zA-Z0-9\.]*"+$/', $s)) {
             return 'Invalid characters, [a-z A-Z 0-9 .] only.';
         }
     }
