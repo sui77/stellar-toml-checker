@@ -62,6 +62,7 @@ ORG_PHONE_NUMBER = "+49 173 89 59 456"
 ORG_URL = "https://stellar.sui.li"
 #ORG_LOGO = "https://stellar.sui.li/img/logo.png"
 
+
 [[PRINCIPALS]]
 name                    = "Suat Özgür"
 email                   = "s@sui.li"

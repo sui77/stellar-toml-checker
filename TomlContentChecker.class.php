@@ -282,9 +282,8 @@ class TomlContentChecker
 
     public function alphanumTest($s)
     {
-//        return $s;
-        if (!preg_match('/^"+[a-zA-Z0-9\.]*"+$/', $s)) {
-            return 'Invalid characters, [a-z A-Z 0-9 .] only.';
+        if (!preg_match('/^"+[a-zA-Z0-9\.-]{2,16}"+$/', $s)) {
+            return 'Invalid characters, [a-z A-Z 0-9 . -] only.';
         }
     }
 
