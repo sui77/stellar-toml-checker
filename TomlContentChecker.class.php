@@ -387,6 +387,7 @@ class TomlContentChecker
         if ($pct = $this->publicKeyTest($currency['issuer'])) {
             return $pct;
         }
+$t0 = microtime(1);
 
 
         $ch = curl_init();
@@ -400,10 +401,15 @@ class TomlContentChecker
 
         if ($response = curl_exec($ch)) {
             $info = curl_getinfo($ch);
+            echo 'https://horizon.stellar.org/assets/?asset_issuer=' . $currency['issuer'] . '&asset_code=' . $currency['code'];
+
             if ($info['http_code'] != 200) {
                 return 'Could not find asset in mainnet. (' . $currency['code'] . '-' . $currency['issuer'] . ')';
             } else {
                 $issuer = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $currency['issuer']), 1);
+                echo $currency['code'] . ($t0-microtime(1)) . "<br>";
+                echo "\n"; flush();
+
                 if (!isset($issuer['home_domain'])) {
                     return '(onchain) Issuer ' . $currency['issuer'] . ' home_domain not set.';
                 } elseif ($issuer['home_domain'] != $_REQUEST['home_domain']) {
@@ -414,11 +420,11 @@ class TomlContentChecker
             }
         }
 
-
     }
 
     public function checkTree($testsKey = 'root', $multi = false, $inData = null)
     {
+        $t0 = microtime(1);
         $warnings = [];
         if ($testsKey == 'root') {
             $array = &$this->array;
@@ -486,6 +492,8 @@ class TomlContentChecker
                 }
             }
         }
+        echo $blockMethod . " " . (microtime(1) - $t0) . "<br>";
+
         return $warnings;
     }
 

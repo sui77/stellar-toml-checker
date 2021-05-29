@@ -28,7 +28,7 @@
 
 #FEDERATION_SERVER   = "https://stellar.sui.li/api/federation"
 
-AUTH_SERVER         = "https://stellar.sui.li/api/auth"
+#AUTH_SERVER         = "https://stellar.sui.li/api/auth"
 
 #TRANSFER_SERVER     = "https://stellar.sui.li/api/transfer"
 
@@ -42,7 +42,7 @@ VERSION = "2.0.0"
 
 #HORIZON_URL = "https://horizon.sui.li"
 
-DIRECT_PAYMENT_SERVER = "https://www.weblin.io/sjdflk"
+#DIRECT_PAYMENT_SERVER = "https://www.weblin.io/sjdflk"
 
 
 ACCOUNTS=[
@@ -77,8 +77,7 @@ issuer = "GCSALT7P5DEWLYQSUIQVNIFOYEZH3FFLQ3YBDHAREFMEZLLEWYFW5JZU"
 status = "live"
 display_decimals = "7"
 name = "Salt"
-attestation_of_reserve = "https://sui.li"
-desc = "1 NaCl represents 10000000 ionic NaCl compounds. This asset is physically backed in a salt shaker in my kitchen. Simply create a trustline to get some NaCls for free."
+desc = "1 NaCl represents 10000000 ionic NaCl compounds. This asset is physically backed in a salt shaker in my kitchen."
 image = "https://stellar.sui.li/NaCl/img.png"
 is_asset_anchored =true
 anchor_asset_type = "commodity"
@@ -99,9 +98,9 @@ max_number = 1000000
 #PUBLIC_KEY="GASUI2ZC7SSI2LSNIC6YP5LYT3RTQHVKWAKIG4USULRTBVVLKWYR64R3"
 #HISTORY="http://stellar.sui.li/history"
 
-[[VALIDATORS]]
-ALIAS="sui3"
-DISPLAY_NAME="sui.li 3"
-HOST="stellar3.sui.li"
-PUBLIC_KEY="GASUI3OAGIOLSDCGNKWUMB4YNLQ4Y3W6OYEAAWJX3FKQFSWJRIWWABCC"
-HISTORY="http://stellar.sui.li/history"
+#[[VALIDATORS]]
+#ALIAS="sui3"
+#DISPLAY_NAME="sui.li 3"
+#HOST="stellar3.sui.li"
+#PUBLIC_KEY="GASUI3OAGIOLSDCGNKWUMB4YNLQ4Y3W6OYEAAWJX3FKQFSWJRIWWABCC"
+#HISTORY="http://stellar.sui.li/history"
