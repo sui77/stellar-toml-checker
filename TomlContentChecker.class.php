@@ -30,7 +30,7 @@ class TomlContentChecker
                 'transferServer'
             ],
             'TRANSFER_SERVER_SEP0024' => [
-               'transferServer'                
+                'transferServer'
             ],
             'KYC_SERVER' => [
                 'https'
@@ -248,19 +248,19 @@ class TomlContentChecker
         'VALIDATORS' => [
             'ALIAS' => [
                 'alphanum',
-                ],
+            ],
             'DISPLAY_NAME' => [
                 'string',
-                ],
+            ],
             'HOST' => [
                 'hostname',
-                ],
+            ],
             'PUBLIC_KEY' => [
                 'isValidator:true',
             ],
             'HISTORY' => [
                 'history',
-                ],
+            ],
         ],
         'QUORUM_SET' => [
             'VALIDATORS' => [
@@ -332,7 +332,7 @@ class TomlContentChecker
         } else {
             $nodes = json_decode($nodes);
         }
-       // print_r($nodes);
+        // print_r($nodes);
         $this->stellarbeat = $nodes;
     }
 
@@ -343,7 +343,7 @@ class TomlContentChecker
 
     public function phoneTest($s)
     {
-         if (!preg_match('/^\+[0-9 ]*$/', $s)) {
+        if (!preg_match('/^\+[0-9 ]*$/', $s)) {
             return 'Recomended phone format is E.164 (e.g. `+14155552671`)';
         }
     }
@@ -387,7 +387,6 @@ class TomlContentChecker
         if ($pct = $this->publicKeyTest($currency['issuer'])) {
             return $pct;
         }
-$t0 = microtime(1);
 
 
         $ch = curl_init();
@@ -401,15 +400,10 @@ $t0 = microtime(1);
 
         if ($response = curl_exec($ch)) {
             $info = curl_getinfo($ch);
-            echo 'https://horizon.stellar.org/assets/?asset_issuer=' . $currency['issuer'] . '&asset_code=' . $currency['code'];
-
             if ($info['http_code'] != 200) {
                 return 'Could not find asset in mainnet. (' . $currency['code'] . '-' . $currency['issuer'] . ')';
             } else {
                 $issuer = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $currency['issuer']), 1);
-                echo $currency['code'] . ($t0-microtime(1)) . "<br>";
-                echo "\n"; flush();
-
                 if (!isset($issuer['home_domain'])) {
                     return '(onchain) Issuer ' . $currency['issuer'] . ' home_domain not set.';
                 } elseif ($issuer['home_domain'] != $_REQUEST['home_domain']) {
@@ -420,11 +414,11 @@ $t0 = microtime(1);
             }
         }
 
+
     }
 
     public function checkTree($testsKey = 'root', $multi = false, $inData = null)
     {
-        $t0 = microtime(1);
         $warnings = [];
         if ($testsKey == 'root') {
             $array = &$this->array;
@@ -492,8 +486,6 @@ $t0 = microtime(1);
                 }
             }
         }
-        echo $blockMethod . " " . (microtime(1) - $t0) . "<br>";
-
         return $warnings;
     }
 
@@ -684,42 +676,42 @@ $t0 = microtime(1);
     protected function historyTest($url)
     {
         $tmp = json_decode(file_get_contents('http://127.0.0.1:11626/info'), 1);
-$ledger = $tmp['info']['ledger']['num'] - 200;
+        $ledger = $tmp['info']['ledger']['num'] - 200;
 
-$url = preg_replace('/\/$/', '', $url);
-            $url = $url . '/.well-known/stellar-history.json';
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 2); //timeout in seconds
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_USERAGENT, 'stellar.toml checker https://stellar.sui.li/toml-check');
+        $url = preg_replace('/\/$/', '', $url);
+        $url = $url . '/.well-known/stellar-history.json';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 2); //timeout in seconds
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'stellar.toml checker https://stellar.sui.li/toml-check');
 
-            //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            if (!($response = curl_exec($ch))) {
-                return $url . ': ' . curl_error($ch);
-            }
-            $info = curl_getinfo($ch);
-            if (!in_array($info['http_code'], [200, 301, 302])) {
-                return $url . ': HTTP ' . $info['http_code'];
-            }
-            $d = json_decode($response, 1);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        if (!($response = curl_exec($ch))) {
+            return $url . ': ' . curl_error($ch);
+        }
+        $info = curl_getinfo($ch);
+        if (!in_array($info['http_code'], [200, 301, 302])) {
+            return $url . ': HTTP ' . $info['http_code'];
+        }
+        $d = json_decode($response, 1);
 
-            if (empty($d)) {
-                return $url . ': JSON parse error.';
-            }
+        if (empty($d)) {
+            return $url . ': JSON parse error.';
+        }
 
-            if ($d['currentLedger'] < $ledger) {
-                return $url . ": currentLedger=" . $d['currentLedger'] . " is not up to date (expected: > " . $ledger . ").";
-            }
+        if ($d['currentLedger'] < $ledger) {
+            return $url . ": currentLedger=" . $d['currentLedger'] . " is not up to date (expected: > " . $ledger . ").";
+        }
     }
 
     protected function stellarHistoryTest($urls)
     {
-$tmp = json_decode(file_get_contents('http://127.0.0.1:11626/info'), 1);
-$ledger = $tmp['info']['ledger']['num'] - 200;
+        $tmp = json_decode(file_get_contents('http://127.0.0.1:11626/info'), 1);
+        $ledger = $tmp['info']['ledger']['num'] - 200;
 
 
         foreach ($urls as $url) {
@@ -792,12 +784,12 @@ $ledger = $tmp['info']['ledger']['num'] - 200;
         }
 
         if ($ownValidator) {
-                $acc = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $key), 1);
-                if (!isset($acc['home_domain'])) {
-                    return '(onchain) Account ' .  $key . ' home_domain not set.';
-                } elseif ($acc['home_domain'] != $_REQUEST['home_domain']) {
-                    return '(onchain) Account ' . $key . ' has set home_domain = ' . htmlspecialchars($acc['home_domain'] . ' (expected: ' . htmlspecialchars($_REQUEST['home_domain']) . ').');
-                }
+            $acc = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $key), 1);
+            if (!isset($acc['home_domain'])) {
+                return '(onchain) Account ' .  $key . ' home_domain not set.';
+            } elseif ($acc['home_domain'] != $_REQUEST['home_domain']) {
+                return '(onchain) Account ' . $key . ' has set home_domain = ' . htmlspecialchars($acc['home_domain'] . ' (expected: ' . htmlspecialchars($_REQUEST['home_domain']) . ').');
+            }
         }
     }
 
