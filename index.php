@@ -105,6 +105,10 @@ ini_set('display_errors', 0);
             <li class="nav-item">
                 <a class="nav-link" href="https://github.com/sui77/stellar-candyman">candyman</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://lumenthropy.com/">donate</a>
+            </li>
         </ul>
 
     </div>
