@@ -87,6 +87,6 @@ max_number = 1000000
 [[VALIDATORS]]
 ALIAS="sui2"
 DISPLAY_NAME="sui.li 2"
-HOST="stellar2.sui.li"
+HOST="core.sui.li"
 PUBLIC_KEY="GASUI2ZC7SSI2LSNIC6YP5LYT3RTQHVKWAKIG4USULRTBVVLKWYR64R3"
 HISTORY="http://core.sui.li/history"
