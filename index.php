@@ -118,7 +118,7 @@ ini_set('display_errors', 0);
     <div class="jumbotron">
         <div class="container">
             <h2>stellar.toml checker</h2>
-            Checks your <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0001.md">stellar.toml (v2.4.1)</a>
+            Checks your <a href="https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0001.md">stellar.toml (v2.5.0)</a>
             for connectivity, syntax, valid contents and availability of defined services and assets.
         </div>
     </div>

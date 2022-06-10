@@ -215,7 +215,7 @@ class TomlContentChecker
                 'boolean'
             ],
             'anchor_asset_type' => [
-                'enum:fiat,crypto,stock,bond,commodity,realestate,other'
+                'enum:fiat,crypto,nft,stock,bond,commodity,realestate,other'
             ],
             'anchor_asset' => [
                 'string'
