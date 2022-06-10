@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
     apache2 libapache2-mod-php php-curl php-zip redis
 
 # Enable apache mods.
-RUN a2enmod php7
+RUN a2enmod php
 RUN a2enmod rewrite
 RUN a2enmod headers
 
