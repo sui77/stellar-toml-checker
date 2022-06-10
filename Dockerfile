@@ -7,7 +7,7 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
     apache2 libapache2-mod-php php-curl php-zip redis
 
 # Enable apache mods.
-RUN a2enmod php
+#RUN a2enmod php
 RUN a2enmod rewrite
 RUN a2enmod headers
 
@@ -30,7 +30,7 @@ COPY ./ .
 
 RUN php -r "copy('http://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
-RUN php composer.phar install
+RUN cd /var/www/html && php composer.phar install
 
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
