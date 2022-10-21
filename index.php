@@ -130,7 +130,7 @@ ini_set('display_errors', 0);
                     <div class="input-group-prepend">
                         <div class="input-group-text">home_domain or accountID</div>
                     </div>
-                    <input value="<?= (isset($_REQUEST['home_domain']) ? htmlspecialchars($_REQUEST['home_domain']) : '') ?>"
+                    <input value="<?= (isset($uri) ? htmlspecialchars($uri) : '') ?>"
                            autocomplete="off" name="home_domain" type="text" class="form-control" id="home_domain"
                            placeholder="">
                 </div>
@@ -145,8 +145,13 @@ ini_set('display_errors', 0);
     <hr>
     <div class="container">
         <?php
+
+
         ini_set('display-errors', 1);
-        if (isset($_REQUEST['home_domain'])) {
+        $uri = preg_replace('/^\/*/', '', $_SERVER['REQUEST_URI']);
+
+
+        if ($uri != '') {
             include 'tools.php';
             include 'tests.php';
 
@@ -154,15 +159,15 @@ ini_set('display_errors', 0);
             fputs($fp, date('Y-m-d H:i:s') . ' ' . $_SERVER['HTTP_X_FORWARDED_FOR'] . ' ' . json_encode($_REQUEST) . "===\n");
             fclose($fp);*/
 
-            $domain = $_REQUEST['home_domain'];
+            $domain = $uri;
             $domainfail = false;
-            if (preg_match('/^G[A-Z0-9]{55}$/', $_REQUEST['home_domain'])) {
-                $acc = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $_REQUEST['home_domain']), 1);
+            if (preg_match('/^G[A-Z0-9]{55}$/', $uri)) {
+                $acc = json_decode(file_get_contents('https://horizon.stellar.org/accounts/' . $uri), 1);
 
-                $_REQUEST['home_domain'] = $domain = $acc['home_domain'];
+                $uri = $domain = $acc['home_domain'];
                 if (empty($domain)) {
                     $domainfail = true;
-                    echo output('domain', 'failed', '<strong>Not found</strong><hr>No home_domain found for account ' . htmlspecialchars($_REQUEST['home_domain']) . '');
+                    echo output('domain', 'failed', '<strong>Not found</strong><hr>No home_domain found for account ' . htmlspecialchars($uri) . '');
                 }
             }
 
