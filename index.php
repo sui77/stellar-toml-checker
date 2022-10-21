@@ -150,6 +150,9 @@ ini_set('display_errors', 0);
         ini_set('display-errors', 1);
         $uri = preg_replace('/^\/*/', '', $_SERVER['REQUEST_URI']);
 
+        // dirty workaround
+        $_REQUEST['home_domain'] = $uri;
+
 
         if ($uri != '') {
             include 'tools.php';
