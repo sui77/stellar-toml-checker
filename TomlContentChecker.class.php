@@ -247,7 +247,7 @@ class TomlContentChecker
         ],
         'VALIDATORS' => [
             'ALIAS' => [
-                'alphanumlower',
+                'alphanum',
             ],
             'DISPLAY_NAME' => [
                 'string',
@@ -282,15 +282,8 @@ class TomlContentChecker
 
     public function alphanumTest($s)
     {
-        if (!preg_match('/^[a-zA-Z0-9\.-]{2,16}$/', $s)) {
-            return 'Invalid characters, [a-z A-Z 0-9 . -] only.';
-        }
-    }
-
-    public function alphanumlowerTest($s)
-    {
         if (!preg_match('/^[a-z0-9\.-]{2,16}$/', $s)) {
-            return 'Invalid characters, [a-z 0-9 . -] only.';
+            return 'Invalid characters or length, [a-z 0-9 . -] only, 2 to 16 characters.';
         }
     }
 
