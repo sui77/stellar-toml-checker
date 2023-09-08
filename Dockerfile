@@ -18,6 +18,8 @@ FROM trafex/php-nginx
 
 USER root
 
+RUN rm /etc/nginx/conf.d/default.conf
+
 COPY --from=composer /app /var/www/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
